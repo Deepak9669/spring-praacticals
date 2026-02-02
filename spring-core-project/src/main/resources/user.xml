@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- User user = new User(); -->
+<!-- By using setter getter -->
+	<bean id="user" class="com.rays.test.User">
+		<property name="name" value="ram"></property>  <!-- setName("ram"); -->
+		<property name="address" value="sehore"></property>   <!-- setAddress("sehore"); -->
+	</bean>
+
+	<bean id="user1" class="com.rays.test.User">
+		<property name="name" value="Deepak"></property> <!-- setName("Deepak"); -->
+		<property name="address" value="Bhopal"></property>    <!-- setAddress("Bhopal"); -->
+		
+	</bean>
+
+<!--By Using Constructor  -->
+
+	<bean id="user2" class="com.rays.test.User">
+		<constructor-arg value="Shyam"></constructor-arg>   <!-- setName("Shyam"); -->
+		<constructor-arg value="Indore"></constructor-arg>    <!-- setAddress("Indore"); -->
+		
+	</bean>
+
+
+
+
+
+
+</beans>
