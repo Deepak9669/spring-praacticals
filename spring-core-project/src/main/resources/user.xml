@@ -10,6 +10,12 @@
 		<property name="name" value="ram"></property>  <!-- setName("ram"); -->
 		<property name="address" value="sehore"></property>   <!-- setAddress("sehore"); -->
 	</bean>
+	
+	<bean id="person" class="com.rays.test.Person">
+		<property name="name" value="ram"></property>  <!-- setName("ram"); -->
+		<property name="login" value="ram@gmail.com"></property>   <!-- setAddress("ram@gmail.com"); -->
+		<property name="password" value="ram@123"></property>
+	</bean>
 
 	<bean id="user1" class="com.rays.test.User">
 		<property name="name" value="Deepak"></property> <!-- setName("Deepak"); -->
@@ -23,6 +29,12 @@
 		<constructor-arg value="Shyam"></constructor-arg>   <!-- setName("Shyam"); -->
 		<constructor-arg value="Indore"></constructor-arg>    <!-- setAddress("Indore"); -->
 		
+	</bean>
+	
+	<bean id ="person1" class ="com.rays.test.Person">
+	<constructor-arg value="deepak"></constructor-arg>
+	<constructor-arg value="dev@gmail.com"></constructor-arg>
+	<constructor-arg value="deepak@123"></constructor-arg>
 	</bean>
 
 
