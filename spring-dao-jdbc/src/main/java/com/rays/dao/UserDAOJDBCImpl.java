@@ -103,7 +103,7 @@ public class UserDAOJDBCImpl implements UserDAOInt {
 				sql.append(" limit " + pageNo + "," + pageSize);
 				
 			}
-			jdbcTemplate.query(sql.toString(), new UserMaper());
+			list = jdbcTemplate.query(sql.toString(), new UserMaper());
 			
 		}
 		

@@ -18,6 +18,12 @@ public class UserService{
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public long add(UserDTO dto) {
+		
+	UserDTO existDto=	findByLogin(dto.getLogin());
+	if(existDto != null){
+		throw new RuntimeException("login id allready exist");
+		
+	}
 		long pk = dao.add(dto);
 		return pk;
 	}
@@ -27,6 +33,11 @@ public class UserService{
 	}
 	
 	public void update(UserDTO dto) {
+		UserDTO existDto=	findByLogin(dto.getLogin());
+		if(existDto != null && existDto.getId() != dto.getId()){
+			throw new RuntimeException("login id allready exist");
+			
+		}
 		dao.update(dto);
 	}
 	

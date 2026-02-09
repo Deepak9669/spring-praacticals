@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import com.rays.dto.UserDTO;
 import com.rays.service.UserService;
 
-
 @Component("testUserService")
 public class TestUserService {
 
@@ -29,7 +28,8 @@ public class TestUserService {
 //		test.testUpdate();
 //		test.testFindByPk();
 //		test.testFindByLogin();
-		test.testAuthenticate();
+//		test.testAuthenticate();
+		test.testSearch();
 
 	}
 
@@ -43,12 +43,13 @@ public class TestUserService {
 		long pk = service.add(dto);
 		System.out.println("Data Inserted... pk = " + pk);
 	}
-	
+
 	public void testDelete() {
-		
+
 		service.delete(2);
-		
+
 	}
+
 	private void testUpdate() {
 		UserDTO dto = new UserDTO();
 		dto.setId(1);
@@ -58,6 +59,7 @@ public class TestUserService {
 		dto.setPassword("ram123");
 		service.update(dto);
 	}
+
 	private void testFindByPk() {
 		UserDTO dto = service.findByPk(1);
 		System.out.println(dto.getId());
@@ -84,15 +86,16 @@ public class TestUserService {
 		System.out.println(dto.getLogin());
 		System.out.println(dto.getPassword());
 	}
+
 	private void testSearch() {
 		UserDTO dto = new UserDTO();
 
 		int pageNo = 1;
 		int pageSize = 5;
 
-		dto.setFirstName("ram");
+		dto.setFirstName("r");
 
-	List<UserDTO> list = service.search(dto, pageNo, pageSize);
+		List<UserDTO> list = service.search(dto, pageNo, pageSize);
 
 		Iterator<UserDTO> it = list.iterator();
 		while (it.hasNext()) {
@@ -105,5 +108,4 @@ public class TestUserService {
 		}
 	}
 
-	
 }
