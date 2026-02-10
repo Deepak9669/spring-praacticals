@@ -11,7 +11,7 @@ import com.rays.dao.UserDAOInt;
 import com.rays.dto.UserDTO;
 
 @Service
-public class UserService{
+public class UserService {
 
 	@Autowired
 	private UserDAOInt dao;
@@ -21,35 +21,40 @@ public class UserService{
 		long pk = dao.add(dto);
 		return pk;
 	}
+
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void delete(int id) {
-		dao.delete(id);
+	public void delete(long pk) {
+		dao.delete(pk);
 	}
-	
+
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(UserDTO dto) {
 		dao.update(dto);
 	}
-	
-	public UserDTO findByPk(int id) {;
-		return dao.findByPk(id);
-		
+
+	public UserDTO findByPk(long pk) {
+
+		return dao.findByPk(pk);
+
 	}
-	
+
+	@Transactional(readOnly = true)
 	public UserDTO findByLogin(String login) {
 		return dao.findByLogin(login);
-		
+
 	}
-	public UserDTO authenticate(String login , String password) {
+
+	@Transactional(readOnly = true)
+	public UserDTO authenticate(String login, String password) {
 		return dao.authenticate(login, password);
-		
+
 	}
-	
-	public List<UserDTO> search(UserDTO dto , int pageNo , int pageSize) {
+
+	@Transactional(readOnly = true)
+	public List<UserDTO> search(UserDTO dto, int pageNo, int pageSize) {
 		return dao.search(dto, pageNo, pageSize);
-		
+
 	}
-	
-	
 
 }
 

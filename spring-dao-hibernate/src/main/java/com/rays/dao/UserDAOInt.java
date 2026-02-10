@@ -9,11 +9,11 @@ public interface UserDAOInt {
 
 	public long add(UserDTO dto);
 
-	public void delete(int id);
+	public void delete(Long pk);
 
 	public void update(UserDTO dto);
 	
-	public UserDTO findByPk(int id);
+	public UserDTO findByPk(Long pk);
 	
 	public UserDTO findByLogin(String login);
 	

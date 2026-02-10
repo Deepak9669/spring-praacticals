@@ -23,18 +23,19 @@ public class TestUserService {
 
 		TestUserService test = (TestUserService) context.getBean("testUserService");
 
-		test.testAdd();
+//		test.testAdd();
 //		test.testUpdate();
 //		test.testFindByPk();
-//		test.testDelete();
+//	    test.testDelete();
 //		test.testFindByLogin();
-//		test.testSearch();
+	test.testSearch();
+//		test.testAuthenticate();
 
 	}
 
 	private void testSearch() {
 		UserDTO dto = new UserDTO();
-		dto.setFirstName("a");
+		dto.setFirstName("K");
 		int pageNo = 1;
 		int pageSize = 5;
 		List<UserDTO> list = service.search(dto, pageNo, pageSize);
@@ -52,7 +53,7 @@ public class TestUserService {
 
 	private void testFindByLogin() {
 		UserDTO dto = new UserDTO();
-		dto = service.findByLogin("shyam@gmail.com");
+		dto = service.findByLogin("ram@gmail.com");
 		if (dto != null) {
 			System.out.println(dto.getId());
 			System.out.println(dto.getFirstName());
@@ -67,7 +68,7 @@ public class TestUserService {
 
 	public void testAdd() {
 		UserDTO dto = new UserDTO();
-		dto.setFirstName("Ram");
+		dto.setFirstName("Shyam");
 		dto.setLastName("Yadav");
 		dto.setLogin("ram@gmail.com");
 		dto.setPassword("ram123");
@@ -77,7 +78,7 @@ public class TestUserService {
 
 	private void testUpdate() {
 		UserDTO dto = new UserDTO();
-		dto.setId(2);
+		dto.setId(1);
 		dto.setFirstName("Kamal");
 		dto.setLastName("Yadav");
 		dto.setLogin("ram@gmail.com");
@@ -93,5 +94,14 @@ public class TestUserService {
 
 	private void testDelete() {
 		service.delete(2);
+	}
+
+	private void testAuthenticate() {
+		UserDTO dto = service.authenticate("ram@gmail.com", "ram123");
+		System.out.println(dto.getId());
+		System.out.println(dto.getFirstName());
+		System.out.println(dto.getLastName());
+		System.out.println(dto.getLogin());
+		System.out.println(dto.getPassword());
 	}
 }
