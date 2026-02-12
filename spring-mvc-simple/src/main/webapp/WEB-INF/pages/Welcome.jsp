@@ -18,6 +18,5 @@
 	<div align="center">
 		<h1>Online result system</h1>
 	</div>
-
 </body>
 </html>
