@@ -1,9 +1,12 @@
 package com.rays.ctl;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +36,13 @@ public class LoginCtl {
 	}
 
 	@PostMapping
-	public String login(@ModelAttribute("form") LoginForm form, HttpSession session) {
+	public String login(@ModelAttribute("form") @Valid LoginForm form, BindingResult bindingResult, HttpSession session,
+			Model model) {
+
+		if (bindingResult.hasErrors()) {
+			return "LoginView";
+
+		}
 
 		UserDTO dto = new UserDTO();
 		dto = UserServiceImpl.authenticate(form.getLogin(), form.getPassword());
@@ -43,6 +52,7 @@ public class LoginCtl {
 			return "redirect:/Welcome";
 
 		} else {
+			model.addAttribute("emsg", "Please enter valid email & password");
 			return "LoginView";
 		}
 

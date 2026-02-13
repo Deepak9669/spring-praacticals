@@ -13,7 +13,7 @@ public interface UserDAOInt {
 
 	public void update(UserDTO dto);
 	
-	public UserDTO findByPk(Long pk);
+	public UserDTO findByPk(long pk);
 	
 	public UserDTO findByLogin(String login);
 	

@@ -13,6 +13,26 @@ public class UserForm {
 
 	private String dob;
 
+	private Long[] ids;
+
+	private int pageNo;
+
+	public Long[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Long[] ids) {
+		this.ids = ids;
+	}
+
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -70,6 +90,5 @@ public class UserForm {
 	}
 
 	private String address;
-
 
 }

@@ -36,7 +36,7 @@ public class UserDAOHibImpl implements UserDAOInt {
 		sessionFactory.getCurrentSession().update(dto);
 	}
 
-	public UserDTO findByPk(Long pk) {
+	public UserDTO findByPk(long pk) {
 		Session session = sessionFactory.getCurrentSession();
 		UserDTO dto = session.get(UserDTO.class, pk);
 		return dto;
@@ -87,20 +87,20 @@ public class UserDAOHibImpl implements UserDAOInt {
 
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(UserDTO.class);
-		
-		if(dto != null) {
-			if(dto.getFirstName() != null && dto.getFirstName().length()>0) {
+
+		if (dto != null) {
+			if (dto.getFirstName() != null && dto.getFirstName().length() > 0) {
 				criteria.add(Restrictions.ilike("firstName", dto.getFirstName() + "%"));
-				
+
 			}
-			if(pageSize >0) {
-				pageNo = (pageNo-1)*pageSize;
+			if (pageSize > 0) {
+				pageNo = (pageNo - 1) * pageSize;
 				criteria.setFirstResult(pageNo);
 				criteria.setMaxResults(pageSize);
 			}
-			
+
 		}
-	list =	criteria.list();
+		list = criteria.list();
 
 		return list;
 	}

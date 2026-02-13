@@ -11,7 +11,7 @@ import com.rays.dao.UserDAOInt;
 import com.rays.dto.UserDTO;
 
 @Service
-public class UserServiceImpl implements UserServiceInt{
+public class UserServiceImpl implements UserServiceInt {
 
 	@Autowired
 	private UserDAOInt dao;
@@ -19,11 +19,11 @@ public class UserServiceImpl implements UserServiceInt{
 	@Transactional(propagation = Propagation.REQUIRED)
 	public long add(UserDTO dto) {
 		UserDTO existDto = findByLogin(dto.getLogin());
-		if (existDto!=null) {
-			throw new RuntimeException("");
-			
+		if (existDto != null) {
+			throw new RuntimeException("Email All ready Exist");
+
 		}
-		
+
 		long pk = dao.add(dto);
 		return pk;
 	}
@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserServiceInt{
 		dao.update(dto);
 	}
 
+	@Transactional(readOnly = true)
 	public UserDTO findByPk(long pk) {
 
 		return dao.findByPk(pk);
@@ -62,10 +63,11 @@ public class UserServiceImpl implements UserServiceInt{
 
 	}
 
-	
-	
-
-	
+	@Override
+	public long save(UserDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
 

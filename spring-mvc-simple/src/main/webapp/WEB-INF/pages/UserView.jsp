@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,39 +10,43 @@
 	<%@ include file="Header.jsp"%>
 	<sf:form method="post" modelAttribute="form">
 		<div align="center">
-			<h1 style="color: navy">Add User</h1>
-			<h3>${msg}</h3>
+
+			<c:if test="${form.id>0}">
+				<h1 style="color: navy">Update User</h1>
+			</c:if>
+			<c:if test="${form.id==0}">
+				<h1 style="color: navy">Add User</h1>
+			</c:if>
+			<h3 style="color: green">${msg}</h3>
 			<table>
 				<tr>
 					<th align="left">First Name :</th>
-					<td><sf:input path="firstName"
-							placeholder="enter your firstName" /></td>
+					<td><sf:input path="firstName" /></td>
 				</tr>
 				<tr>
 					<th align="left">Last Name :</th>
-					<td><sf:input path="lastName"
-							placeholder="enter your lastName" /></td>
+					<td><sf:input path="lastName" /></td>
 				</tr>
 				<tr>
 					<th align="left">Login ID :</th>
-					<td><sf:input path="login" placeholder="enter your login" /></td>
+					<td><sf:input path="login" /></td>
 				</tr>
 				<tr>
 					<th align="left">Password :</th>
-					<td><sf:input path="password"
-							placeholder="enter your password" /></td>
+					<td><sf:input path="password" /></td>
 				</tr>
 				<tr>
-					<th align="left">DOB :</th>
-					<td><sf:input path="dob" placeholder="enter your dob" /></td>
+					<th align="left">Dob :</th>
+					<td><sf:input path="dob" /></td>
 				</tr>
 				<tr>
-					<th align="left">Address</th>
-					<td><sf:input path="address" placeholder="enter your address" /></td>
+					<th align="left">Address :</th>
+					<td><sf:input path="address" /></td>
 				</tr>
 				<tr>
 					<th></th>
-					<td><input type="submit" name="operation" value="save"></td>
+					<td><input type="submit" name="operation"
+						value="${form.id > 0 ? 'update' : 'save'}"></td>
 				</tr>
 			</table>
 		</div>
